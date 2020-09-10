@@ -29,7 +29,7 @@ public class PrimesFinderTool {
 		
 			//Punto 1
 		
-            CalcularPrimosConcurrente cpc = new CalcularPrimosConcurrente(100, 4);
+            CalcularPrimosConcurrente cpc = new CalcularPrimosConcurrente(10000, 4);
             System.out.println(cpc.encontrarPrimos());
             
             
@@ -45,6 +45,7 @@ public class PrimesFinderTool {
                     Thread.sleep(10);
                     if (MouseMovementMonitor.getInstance().getTimeSinceLastMouseMovement()>10000){
                         System.out.println("Idle CPU ");
+                        System.out.println(cpc.encontrarPrimos());
                     }
                     else{
                         System.out.println("User working again!");
