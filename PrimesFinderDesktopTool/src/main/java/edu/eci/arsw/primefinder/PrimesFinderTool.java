@@ -27,7 +27,9 @@ public class PrimesFinderTool {
             System.out.println(prs.getPrimes());
             */    
 		
-            CalcularPrimosConcurrente cpc = new CalcularPrimosConcurrente(12, 4);
+			//Punto 1
+		
+            CalcularPrimosConcurrente cpc = new CalcularPrimosConcurrente(10, 4);
             System.out.println(cpc.encontrarPrimos());
             
             /*while(task_not_finished){

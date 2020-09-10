@@ -3,30 +3,35 @@ package edu.eci.arsw.api.primesrepo.service;
 import edu.eci.arsw.api.primesrepo.model.FoundPrime;
 
 import java.util.List;
+import java.util.concurrent.ConcurrentHashMap;
+
+import org.springframework.stereotype.Service;
 
 /**
- * @author Santiago Carrillo
- * 2/22/18.
+ * @author Santiago Carrillo 2/22/18.
  */
-public class PrimeServiceStub implements PrimeService
-{
-    @Override
-    public void addFoundPrime( FoundPrime foundPrime )
-    {
-        //TODO
-    }
 
-    @Override
-    public List<FoundPrime> getFoundPrimes()
-    {
-        //TODO
-        return null;
-    }
+@Service
+public class PrimeServiceStub implements PrimeService {
+	static ConcurrentHashMap<String, FoundPrime> primosEncontrados;
 
-    @Override
-    public FoundPrime getPrime( String prime )
-    {
-        //TODO
-        return null;
-    }
+	public PrimeServiceStub() {
+		primosEncontrados = new ConcurrentHashMap<String, FoundPrime>();
+	}
+
+	@Override
+	public void addFoundPrime(FoundPrime foundPrime) throws PrimeException {
+		if(primosEncontrados.contains(foundPrime.getPrime())) throw new PrimeException("El número primo ya tiene un usuario"); 
+		primosEncontrados.put(foundPrime.getPrime(),foundPrime);
+	}
+
+	@Override
+	public List<FoundPrime> getFoundPrimes() {
+		return (List<FoundPrime>) primosEncontrados.values();
+	}
+
+	@Override
+	public FoundPrime getPrime(String prime) {
+		return primosEncontrados.get(prime);
+	}
 }
