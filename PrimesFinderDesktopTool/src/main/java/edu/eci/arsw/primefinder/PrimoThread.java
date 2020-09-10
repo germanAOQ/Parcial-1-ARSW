@@ -3,6 +3,7 @@ package edu.eci.arsw.primefinder;
 import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 import edu.eci.arsw.math.MathUtilities;
 
@@ -10,12 +11,12 @@ public class PrimoThread extends Thread{
 	
 	private int A;
 	private int B;
-	private ArrayList<Integer> primosEncontrados;
+	private CopyOnWriteArrayList<Integer> primosEncontrados;
 	MathUtilities mu;
 
 	
 	
-	public PrimoThread(int A, int B, ArrayList<Integer> primosEncontrados) {
+	public PrimoThread(int A, int B, CopyOnWriteArrayList<Integer> primosEncontrados) {
 		this.A = A;
 		this.B = B;
 		this.primosEncontrados = primosEncontrados;
