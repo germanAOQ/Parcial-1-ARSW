@@ -20,11 +20,13 @@ public class PrimesFinderTool {
             
             PrimesResultSet prs=new PrimesResultSet("john");
             
-            PrimeFinder.findPrimes(new BigInteger("1"), new BigInteger("10000"), prs);
+            PrimeFinder.findPrimes(new BigInteger("1"), new BigInteger("10"), prs);
             
             System.out.println("Prime numbers found:");
             
             System.out.println(prs.getPrimes());
+            
+            
             
             
             /*while(task_not_finished){
