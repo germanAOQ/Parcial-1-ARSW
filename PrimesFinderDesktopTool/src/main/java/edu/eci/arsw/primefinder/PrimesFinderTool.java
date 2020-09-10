@@ -29,10 +29,16 @@ public class PrimesFinderTool {
 		
 			//Punto 1
 		
-            CalcularPrimosConcurrente cpc = new CalcularPrimosConcurrente(10, 4);
+            CalcularPrimosConcurrente cpc = new CalcularPrimosConcurrente(100, 4);
             System.out.println(cpc.encontrarPrimos());
             
-            /*while(task_not_finished){
+            
+            
+            //Punto 2
+            
+            
+            
+            while(!Thread.interrupted()){
                 try {
                     //check every 10ms if the idle status (10 seconds without mouse
                     //activity) was reached. 
@@ -42,11 +48,16 @@ public class PrimesFinderTool {
                     }
                     else{
                         System.out.println("User working again!");
+                        Thread.holdsLock(cpc);
                     }
                 } catch (InterruptedException ex) {
                     Logger.getLogger(PrimesFinderTool.class.getName()).log(Level.SEVERE, null, ex);
                 }
-            }*/
+                
+                synchronized (cpc) {
+					cpc.notify();
+				}
+            }
                         
             
             

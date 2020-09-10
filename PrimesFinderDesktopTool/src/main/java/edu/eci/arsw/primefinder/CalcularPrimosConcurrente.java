@@ -45,7 +45,6 @@ public class CalcularPrimosConcurrente {
 		
 		int acum = 1;
 		for(int i = 0; i<totalThreads; i++) {
-			System.out.println(acum +" "+asignado[i]);
 			hilos[i] = new PrimoThread(acum, asignado[i]+acum, primosEncontrados);
 			hilos[i].start();
 			acum+= asignado[i];
