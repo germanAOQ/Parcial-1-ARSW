@@ -1,5 +1,8 @@
 package edu.eci.arsw.primefinder;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class CalcularPrimosConcurrente {
 
 	private int totalNumeros;
@@ -30,8 +33,22 @@ public class CalcularPrimosConcurrente {
 	}
 	
 	
-	public int[] encontrarPrimos() {
-		return null;
+	public List<Integer> encontrarPrimos() throws InterruptedException {
+		ArrayList<Integer> primosEncontrados = new ArrayList<Integer>();
+		Thread[] hilos = new PrimoThread[totalThreads];
+		
+		int acum = 0;
+		for(int i = 0; i<totalThreads; i++) {
+			hilos[i] = new PrimoThread(acum, asignado[i]+acum, primosEncontrados);
+			hilos[i].start();
+			acum+= asignado[i];
+		}
+		
+		for(int i = 0; i<totalThreads; i++) {
+			hilos[i].join();
+		}
+		
+		return primosEncontrados;
 	}
 	
 	

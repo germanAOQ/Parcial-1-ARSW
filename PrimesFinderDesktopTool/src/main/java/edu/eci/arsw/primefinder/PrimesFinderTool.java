@@ -14,10 +14,11 @@ import org.apache.http.impl.client.HttpClientBuilder;
 
 public class PrimesFinderTool {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws InterruptedException {
 		            
             int maxPrim=1000;
             
+            /**
             PrimesResultSet prs=new PrimesResultSet("john");
             
             PrimeFinder.findPrimes(new BigInteger("1"), new BigInteger("10"), prs);
@@ -25,7 +26,10 @@ public class PrimesFinderTool {
             System.out.println("Prime numbers found:");
             
             System.out.println(prs.getPrimes());
+            */
             
+            CalcularPrimosConcurrente cpc = new CalcularPrimosConcurrente(1000, 4);
+            System.out.println(cpc.encontrarPrimos());
             
             
             
